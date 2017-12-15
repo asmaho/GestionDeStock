@@ -1,0 +1,7 @@
+services:
+    security.authentication.customized_success_handler:
+        class: 'HTM\UserBundle\Handler\Authentication\AuthenticationSuccessHandler'
+        arguments:  ["@security.http_utils", {},@router, @security.context,@doctrine.orm.entity_manager,@session]
+        public: false
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }

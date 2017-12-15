@@ -1,0 +1,115 @@
+{% extends 'HTMStockBundle::index.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-11">
+            <div class="grid simple">
+                <div class="grid-body no-border invoice-body"> <br>
+                    <a href="{{ path('magasinier_index') }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-primary my-colorpicker-control" href="#" data-colorpicker-guid="1"><i class="fa fa-reply-all">  Retourner à la liste</i></a>
+                    <a href="{{ path('magasinier_edit', { 'id': magasinier.id }) }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-warning my-colorpicker-control" href="#" data-colorpicker-guid="1"><i class="fa fa-edit"> Modifier </i></a>
+                    <a href="{{path('magasinier_delete', { 'id':magasinier.id }) }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-danger my-colorpicker-control" href="#" data-colorpicker-guid="1"><i class="fa fa-times fa fa-white"> Supprimer</i></a>
+                    <br><br><br><br>
+                    <div class="pull-left">
+                        <address>
+
+
+                            <h5 class="semi-bold " style="color:green"><I>Id:</I></h5>
+                            <strong>{{ magasinier.id }}</strong><br>
+
+                            <h5 class="semi-bold " style="color:green"><I>Nom:</I></h5>
+                            <strong>{{ magasinier.nom}}</strong><br>
+
+                            <h5 class="semi-bold " style="color:green"><I>Prenom:</I></h5>
+                            <strong>{{   magasinier.prenom}}</strong><br>
+
+
+                            <h5  class="semi-bold " style="color:green"><I>Adresse:</I></h5>
+                            <strong>{{ magasinier.adresse }}</strong><br>
+
+                            <h5  class="semi-bold " style="color:green"><I>Téléphone:</I></h5>
+                            <strong>{{ magasinier.telephone }}</strong><br>
+
+                            <h5  class="semi-bold " style="color:green"><I>Adresse:</I></h5>
+                            <strong>{{ magasinier.adresse }}</strong><br>
+
+                            <h5  class="semi-bold " style="color:green"><I>Point de vente:</I></h5>
+                            <strong>{{  magasinier.PointDeVente.nomPv }}</strong><br>
+                            <br>
+
+                        </address>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+{% endblock %}
+  {#  #}{# <h1>Magasinier</h1>
+ #}{#
+   <div class="table-responsive">
+     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+    <thead>
+            <tr class="active">
+                <th>Id</th>
+                <td>{{ magasinier.id }}</td>
+            </tr>
+          
+            <tr class="active">
+                <th>Nom</th>
+                <td>{{ magasinier.nom }}</td>
+            </tr>
+            <tr class="active">
+                <th>Prenom</th>
+                <td>{{ magasinier.prenom }}</td>
+            </tr>
+            <tr class="active">
+                <th>Cin</th>
+                <td>{{ magasinier.cIN }}</td>
+            </tr>
+            <tr class="active">
+                <th>Telephone</th>
+                <td>{{ magasinier.telephone }}</td>
+            </tr>
+            <tr class="active">
+                <th>Datenaissance</th>
+                <td>{% if magasinier.datenaissance %}{{ magasinier.datenaissance|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr class="active">
+                <th>Sexe</th>
+                <td>{{ magasinier.sexe }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+       
+            <a href="{{ path('magasinier_index') }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-primary my-colorpicker-control">Back to the list</a>
+      
+            <a href="{{ path('magasinier_edit', { 'id': magasinier.id }) }}"  data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-primary my-colorpicker-control">Edit</a>
+      
+            {{ form_start(delete_form) }}
+                 <br>  <input type="submit" class="btn btn-danger" value="Delete">
+            {{ form_end(delete_form) }}
+       
+    </ul>#}
+

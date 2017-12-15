@@ -1,0 +1,490 @@
+<?php
+
+namespace HTM\StockBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+/**
+ * Produit
+ *
+ * @ORM\Table(name="produit")
+ * @ORM\Entity(repositoryClass="HTM\StockBundle\Repository\ProduitRepository")
+ */
+class Produit
+{
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @Assert\NotBlank(message="ce champ est obligatoire")
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank(message="la description est obligatoire")
+     */
+    private $description;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="barCode", type="integer")
+     * @Assert\NotBlank(message="le barCode est obligatoire")
+     * @Assert\GreaterThan(
+     *     value=0,
+     *     message=" le barCode doit etre supérieur à 0"
+     *     )
+     */
+    private $barCode;
+
+    /**
+     * @var int
+     * @Assert\NotBlank(message="la quantité est obligatoire")
+     * @ORM\Column(name="quantiteStock", type="integer")
+     */
+    private $quantiteStock;
+
+    /**
+     * @var int
+     * @Assert\NotBlank(message="la quantité min est obligatoire")
+     * @ORM\Column(name="quantiteMin", type="integer")
+     */
+    private $quantiteMin;
+
+    /**
+     * @var int
+     * @Assert\NotBlank(message="le prix est obligatoire")
+     * @ORM\Column(name="price", type="float")
+     */
+    private $price;
+    /**
+     * @Assert\NotBlank()
+     * @Assert\File(maxSize="6000000")
+     */
+    private $file;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Categorie")
+     * @ORM\JoinColumn(name="categorie_id",referencedColumnName="id")
+     */
+    Private $categorie;
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Commande")
+     * @ORM\JoinTable(name="Ligne_Commande")
+     */
+    Private $commande;
+
+    /**
+     * @ORM\OneToMany(targetEntity="DemandeApp", mappedBy="produit")
+     */
+    Private $demandes;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    public $path;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Produit
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Produit
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set barCode
+     *
+     * @param integer $barCode
+     * @return Produit
+     */
+    public function setBarCode($barCode)
+    {
+        $this->barCode = $barCode;
+
+        return $this;
+    }
+
+    /**
+     * Get barCode
+     *
+     * @return integer
+     */
+    public function getBarCode()
+    {
+        return $this->barCode;
+    }
+
+    /**
+     * Set quantiteStock
+     *
+     * @param integer $quantiteStock
+     * @return Produit
+     */
+    public function setQuantiteStock($quantiteStock)
+    {
+        $this->quantiteStock = $quantiteStock;
+
+        return $this;
+    }
+
+    /**
+     * Get quantiteStock
+     *
+     * @return integer
+     */
+    public function getQuantiteStock()
+    {
+        return $this->quantiteStock;
+    }
+
+    /**
+     * Set quantiteMin
+     *
+     * @param integer $quantiteMin
+     * @return Produit
+     */
+    public function setQuantiteMin($quantiteMin)
+    {
+        $this->quantiteMin = $quantiteMin;
+
+        return $this;
+    }
+
+    /**
+     * Get quantiteMin
+     *
+     * @return integer
+     */
+    public function getQuantiteMin()
+    {
+        return $this->quantiteMin;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->facture = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set categorie
+     *
+     * @param \HTM\StockBundle\Entity\Categorie $categorie
+     * @return Produit
+     */
+    public function setCategorie(\HTM\StockBundle\Entity\Categorie $categorie = null)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \HTM\StockBundle\Entity\Categorie
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * Set price
+     *
+     * @param float $price
+     * @return Produit
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+
+    /**
+     * Add commande
+     *
+     * @param \HTM\StockBundle\Entity\Commande $commande
+     * @return Produit
+     */
+    public function addCommande(\HTM\StockBundle\Entity\Commande $commande)
+    {
+        $this->commande[] = $commande;
+
+        return $this;
+    }
+
+    /**
+     * Remove commande
+     *
+     * @param \HTM\StockBundle\Entity\Commande $commande
+     */
+    public function removeCommande(\HTM\StockBundle\Entity\Commande $commande)
+    {
+        $this->commande->removeElement($commande);
+    }
+
+    /**
+     * Get commande
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommande()
+    {
+        return $this->commande;
+    }
+
+    /**
+     * Add demandeapp
+     *
+     * @param \HTM\StockBundle\Entity\DemandeApp $demandeapp
+     * @return Produit
+     */
+    public function addDemandeapp(\HTM\StockBundle\Entity\DemandeApp $demandeapp)
+    {
+        $this->demandeapp[] = $demandeapp;
+
+        return $this;
+    }
+
+    /**
+     * Remove demandeapp
+     *
+     * @param \HTM\StockBundle\Entity\DemandeApp $demandeapp
+     */
+    public function removeDemandeapp(\HTM\StockBundle\Entity\DemandeApp $demandeapp)
+    {
+        $this->demandeapp->removeElement($demandeapp);
+    }
+
+    /**
+     * Get demandeapp
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDemandeapp()
+    {
+        return $this->demandeapp;
+    }
+
+    /**
+     * Get demandeapp
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function toString()
+    {
+        return $this->nom;
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadRootDir() . '/' . $this->path;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadDir() . '/' . $this->path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/produit';
+    }
+
+    public function upload()
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        // use the original file name here but you should
+        // sanitize it at least to avoid any security issues
+
+        // move takes the target directory and then the
+        // target filename to move to
+        $this->getFile()->move(
+            $this->getUploadRootDir(),
+            $this->getFile()->getClientOriginalName()
+        );
+
+        // set the path property to the filename where you've saved the file
+        $this->path = $this->getFile()->getClientOriginalName();
+
+        // clean up the file property as you won't need it anymore
+        $this->file = null;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Produit
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Add demandes
+     *
+     * @param \HTM\StockBundle\Entity\DemandeApp $demandes
+     * @return Produit
+     */
+    public function addDemande(\HTM\StockBundle\Entity\DemandeApp $demandes)
+    {
+        $this->demandes[] = $demandes;
+
+        return $this;
+    }
+
+    /**
+     * Remove demandes
+     *
+     * @param \HTM\StockBundle\Entity\DemandeApp $demandes
+     */
+    public function removeDemande(\HTM\StockBundle\Entity\DemandeApp $demandes)
+    {
+        $this->demandes->removeElement($demandes);
+    }
+
+    /**
+     * Get demandes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDemandes()
+    {
+        return $this->demandes;
+    }
+
+    
+}

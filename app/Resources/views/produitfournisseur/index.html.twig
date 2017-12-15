@@ -1,0 +1,80 @@
+
+
+
+{% extends 'HTMStockBundle::index.html.twig' %}
+
+{% block body %}
+
+<link href="{{asset('bundles/htmstock/admin/plugins/jquery-datatable/css/jquery.dataTables.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{asset('bundles/htmstock/admin/plugins/boostrap-checkbox/css/bootstrap-checkbox.css')}}" rel="stylesheet" type="text/css" media="screen"/>
+<link href="{{asset('bundles/htmstock/admin/plugins/datatables-responsive/css/datatables.responsive.css')}}" rel="stylesheet" type="text/css" media="screen"/>
+<script src="{{asset('bundles/htmstock/admin/plugins/jquery-datatable/js/jquery.dataTables.min.js')}}" type="text/javascript" ></script>
+<script src="{{asset('bundles/htmstock/admin/plugins/jquery-datatable/extra/js/TableTools.min.js')}}" type="text/javascript" ></script>
+<script type="text/javascript" src="{{asset('bundles/htmstock/admin/plugins/datatables-responsive/js/datatables.responsive.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/htmstock/admin/plugins/datatables-responsive/js/lodash.min.js')}}"></script>
+
+<script src="{{asset('bundles/htmstock/admin/js/datatables.js')}}" type="text/javascript"></script>
+<ul class="breadcrumb">
+    <li>
+        <p>La liste des demandes d'approvisionnement</p>
+    </li>
+    <li><a href="#" class="active">Gestion De Stock</a> </li>
+</ul>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="grid simple ">
+            <div class="grid-title">
+                <h4>La <span class="semi-bold">Liste des demandes</span></h4>
+                <div class="tools"> <a href="javascript:;" class="collapse"></a>
+                </div>
+                <div class="grid-body ">
+                    <table class="table" id="example3" >
+                        <thead>
+                        <tr>
+                            <th></th>
+
+
+                            <span class="semi-bold">  <th >Produit</th></span>
+                            <span class="semi-bold"><th >Fournisseur</th></span>
+                            <span class="semi-bold"> <th >Quantité</th></span>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for produitFournisseur in produitFournisseurs %}
+                            <tr class="odd gradeX">
+                                <td><i class="fa fa-plus-circle"></i></td>
+                                <td><span class="label label-important">{{ produitFournisseur.quantite }}</span></td>
+
+                                <td><span class="label label-important">{{ produitFournisseur.produit.nom }}</span></td>
+                                <td><span class="label label-success">{{ produitFournisseur.fournisseur.nomSociete }}</span></td>
+                                <td class="center">
+                                    <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                        <a href="{{ path('produitfournisseur_edit', { 'id': produitFournisseur.id }) }}" class="btn btn-xs  btn-warning"><i class="fa fa-edit"></i></a>
+                                        <a href="{{ path('produitfournisseur_show', { 'id': produitFournisseur.id }) }}" class="btn btn-xs   btn-primary "><i class="fa fa-share"></i></a>
+                                        <a href="{{ path('produitfournisseur_delete', { 'id': produitFournisseur.id }) }}" class="btn btn-xs  btn-danger" ><i class="fa fa-times fa fa-white"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor  %}
+                        </tbody>
+                    </table>
+                    <a href="{{ path('produitfournisseur_new') }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-info my-colorpicker-control" href="#" data-colorpicker-guid="1"><i class="fa fa-plus-square">   Ajouter </i></a>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        $("#test2").remove();
+
+    </script>
+
+    {% endblock %}
+
+
+
+
+
+

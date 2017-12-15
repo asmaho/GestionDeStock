@@ -1,0 +1,37 @@
+{% if  salepoints|length %}
+  <table class="table table-bordered no-more-tablesr" id="dataTables-example">
+          <thead>
+              <tr>
+                  <th>Nom</th>
+                  <th>nom produit</th>
+                  <th>Prix unitaire</th>
+                  <th>Quantité</th>
+                  <th>adresse</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+           <tbody>
+          {% for salepointproduct in salepoints %}
+              <tr>
+                <td>{{ salepointproduct.salePoint.nomPv}}</td>
+                <td>{{ salepointproduct.produit.nom}}</td>
+                <td>{{ salepointproduct.produit.price}}</td>
+                <td>{{ salepointproduct.quantite}}</td>
+                <td>{{ salepointproduct.salePoint.adress}}</td>
+                <td><a href="{{ path('make_new_supply',{'idProduit':salepointproduct.produit.id,'iduser':app.user.id,}) }}"> Demander</a></td>
+              </tr>
+           {% else %}
+               <tr> <span > Le produit n'est pas disponible dans l'ensemble des point des ventes</span> </tr>
+
+          {% endfor %}
+          </tbody>
+        
+  </table>
+
+{% else %}
+    <a href="{{ path('make_new_supply',{'idProduit':produit.id,'iduser':'admin'}) }}"> Demander aupres de l'admin</a>
+{% endif %}
+
+
+	
+ 

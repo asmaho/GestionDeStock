@@ -1,0 +1,70 @@
+{% extends 'HTMMagasinierBundle::magasinier.html.twig' %}
+
+{% block body %}
+    <div class="row-fluid" xmlns="http://www.w3.org/1999/html">
+        <div class="span12">
+            <div class="grid simple ">
+                <div class="grid-title">
+                    <form action="{{ path('make_new_supply',{'idProduit':form.vars.data.produit.id,'iduser':form.vars.data.user.id}) }}"
+                          method="post" {{ form_enctype(form) }}>
+
+
+                        <div class="grid-body ">
+                            {% for flashMessage in app.session.flashbag.get('error') %}
+                                <div class="alert alert-error">
+                                    <button class="close" data-dismiss="alert"></button>
+                                    {{ flashMessage }}
+                                </div>
+                            {% endfor %}
+                            <table class="table table-striped" id="example2" >
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Quantité</th>
+                                    <th>Description</th>
+                                    <th>Prix unitaire</th>
+                                    <th>Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr class="odd gradeX">
+                                    <td><i class="fa fa-plus-circle"></i></td>
+                                    <font size="2" face="georgia" class="text-danger">{{ form_errors(form.quantite) }}</font>
+                                    <td>{{ form_widget(form.quantite) }}</td>
+                                    <td>{{ form.vars.data.produit.nom }}</td>
+                                    <td>{{ form.vars.data.produit.price }}</td>
+                                    <td>
+                                        {% for  quantity in form.vars.data.pointDeVente.productStock if quantity.produit.id== form.vars.data.produit.id%}
+                                            {{  quantity.quantite }}
+                                        {% endfor %}
+                                    </td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                            <input type="submit" class="btn btn-primary text-right" value="Envoyer la demande"  />
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                        {{ form_widget(form._token) }}
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock  %}
+
+
+
+
+
+
+
+    
+ 

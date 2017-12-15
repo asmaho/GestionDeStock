@@ -1,0 +1,75 @@
+
+{% extends 'HTMStockBundle::index.html.twig' %}
+
+{% block body %}
+
+    <link href="{{asset('bundles/htmstock/admin/plugins/jquery-datatable/css/jquery.dataTables.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('bundles/htmstock/admin/plugins/boostrap-checkbox/css/bootstrap-checkbox.css')}}" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="{{asset('bundles/htmstock/admin/plugins/datatables-responsive/css/datatables.responsive.css')}}" rel="stylesheet" type="text/css" media="screen"/>
+    <script src="{{asset('bundles/htmstock/admin/plugins/jquery-datatable/js/jquery.dataTables.min.js')}}" type="text/javascript" ></script>
+    <script src="{{asset('bundles/htmstock/admin/plugins/jquery-datatable/extra/js/TableTools.min.js')}}" type="text/javascript" ></script>
+    <script type="text/javascript" src="{{asset('bundles/htmstock/admin/plugins/datatables-responsive/js/datatables.responsive.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/htmstock/admin/plugins/datatables-responsive/js/lodash.min.js')}}"></script>
+
+    <script src="{{asset('bundles/htmstock/admin/js/datatables.js')}}" type="text/javascript"></script>
+    <div class="row">
+        <div class="col-md-12">
+            <form action="{{ path('produitfournisseur_edit', { 'id': produitFournisseur.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+                <div class="grid simple">
+                    <div class="grid-title no-border">
+                        <h4>Modifier <span class="semi-bold">une offre</span></h4>
+                        <a href="{{ path('produitfournisseur_index') }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-primary my-colorpicker-control" href="#" data-colorpicker-guid="1"><i class="fa fa-reply-all">  Retourner à la liste</i></a>
+                        <a href="{{path('produitfournisseur_delete', { 'id': produitFournisseur.id }) }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-danger my-colorpicker-control" href="#" data-colorpicker-guid="1"><i class="fa fa-times fa fa-white"> Supprimer</i></a>
+                    </div>
+                    <div class="grid-body no-border"> <br>
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+
+                                <div class="form-group">
+                                    <label class="form-label">Produit</label>
+                                    <span class="help"></span>
+                                    <div class="controls">
+                                        {{ form_widget(edit_form.produit)}}
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label"> Fournisseur</label>
+                                    <span class="help"></span>
+                                    <div class="controls">
+                                        {{ form_widget(edit_form.fournisseur)}}
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Quantite</label>
+                                    <span class="help"></span>
+                                    <div class="controls">
+                                        {{ form_widget(edit_form.quantite)}}
+
+                                    </div>
+                                </div>
+                                <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
+
+                                <div class="pull-right">
+                                    <button type="submit" class="btn btn-success btn-cons"><i class="icon-ok"></i> Modifier</button>
+                                    <button type="button" class="btn btn-white btn-cons">Annuler</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{ form_rest(edit_form) }}
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+

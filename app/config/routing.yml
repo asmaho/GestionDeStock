@@ -1,0 +1,29 @@
+htm_stock_produit_fournisseur:
+    resource: "@HTMStockBundle/Controller/ProduitFournisseurController.php"
+    type:     annotation
+
+htm_fournisseur:
+    resource: "@HTMFournisseurBundle/Resources/config/routing.yml"
+    prefix:   /
+
+htm_magasinier:
+    resource: "@HTMMagasinierBundle/Resources/config/routing.yml"
+    prefix:   /
+
+htm_user:
+    resource: "@HTMUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+htm_stock:
+    resource: "@HTMStockBundle/Resources/config/routing.yml"
+    prefix:   /
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+htm_magasinier_routes:
+    resource: "@HTMMagasinierBundle/Controller/"
+    prefix:   /magasinier
+    type:     annotation
+htm_admin_routes:
+    resource: "@HTMStockBundle/Controller/"
+    prefix:   /admin
+    type:     annotation

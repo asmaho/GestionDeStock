@@ -1,0 +1,26 @@
+htm_user_homepage:
+    path:     /
+    defaults: { _controller: HTMUserBundle:Security:login }
+admin_login:
+    path:     /admin/login
+    defaults: { _controller: HTMUserBundle:Security:login }
+magasinier_login:
+    path:     /magasinier/login
+    defaults: { _controller: HTMUserBundle:Security:login }
+fournisseur_login:
+    path:     /fournisseur/login
+    defaults: { _controller: HTMUserBundle:Security:login }
+admin_check:
+    path:     /admin/login_check
+    defaults: { _controller: HTMUserBundle:Security:check }
+magasinier_check:
+    path:     /magasinier/login_check
+    defaults: { _controller: HTMUserBundle:Security:check }
+fournisseur_check:
+    path:     /fournisseur/login_check
+    defaults: { _controller: HTMUserBundle:Security:check }
+admin_logout:
+    path:     /admin/logout
+    defaults: { _controller: FosUserUserBundle:Security:logout }
+
+

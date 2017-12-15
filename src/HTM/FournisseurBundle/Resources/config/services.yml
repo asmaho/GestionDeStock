@@ -1,0 +1,4 @@
+services:
+#    htm_fournisseur.example:
+#        class: HTM\FournisseurBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

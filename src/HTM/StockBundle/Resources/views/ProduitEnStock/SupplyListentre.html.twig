@@ -1,0 +1,61 @@
+{% extends 'HTMStockBundle::index.html.twig' %}
+
+
+{% block body %}
+<style>
+    .grid.simple {
+        margin-top: 100px;
+    }
+</style>
+    <div class=" grid simple">
+       <div id="salepoint-result" class="grid-body row">
+            <table class="table table-bordered no-more-tablesr" id="dataTables-example">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>nom produit</th>
+                    <th>Prix unitaire</th>
+                    <th>Quantité</th>
+                    <th>Statut</th>
+                    <th>action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entry in entities %}
+                    <tr>
+                        <td>{% if entry.PointDeVente.nomPv is defined%} {{  entry.PointDeVente.nomPv }}{% endif %}</td>
+                        <td>{{ entry.produit.nom}}</td>
+                        <td>{{ entry.produit.price}}</td>
+                        <td>{{ entry.quantite}}</td>
+                        <td>
+                            {% if  entry.statut == 0%}
+                                En attente
+                            {% elseif entry.statut ==1%}
+                                Accepté
+                            {% elseif entry.statut ==2 %}
+                                Refusé
+                        {% endif %}
+                        </td>
+                        <td>
+                            {% if entry.statut ==0%}
+                                <a href="{{ path('admin_change_statut',{'id':entry.id,'statut':1}) }}">Accepter</a>
+                                <a href="{{ path('admin_change_statut',{'id':entry.id,'statut':2}) }}">Refuser</a>
+                                <a href="">Modifier</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr> <span > Le point de vente n'a pas des sorties pour le moment </span> </tr>
+
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+	
+ 

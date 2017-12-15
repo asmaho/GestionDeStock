@@ -1,0 +1,12 @@
+04109b,::1,GET,http://localhost/GestionDeStock/web/app_dev.php/admin/StockGlobale,1466296002,,200
+233e15,::1,GET,http://localhost/GestionDeStock/web/app_dev.php/admin/StockGlobale,1466296590,,200
+3c1c35,::1,GET,http://localhost/GestionDeStock/web/app_dev.php/admin/StockGlobale,1466296648,,200
+3308ac,::1,GET,http://localhost/GestionDeStock/web/app_dev.php/admin/stockglobale/5,1466296654,,200
+f482c6,::1,GET,http://localhost/GestionDeStock/web/app_dev.php/admin/stockglobale/5,1466296898,,200
+069a51,::1,GET,http://localhost/GestionDeStock/web/app_dev.php/admin/stockglobale/5,1466296962,,200
+2a1f02,::1,GET,http://localhost/GestionDeStock/web/app_dev.php/admin/stockglobale/5,1466297109,,200
+882e6e,::1,GET,http://localhost/GestionDeStock/web/app_dev.php/,1511113237,,200
+221e00,::1,POST,http://localhost/GestionDeStock/web/app_dev.php/admin/login_check,1511113276,,302
+e13cb3,::1,GET,http://localhost/GestionDeStock/web/app_dev.php/admin,1511113280,,200
+00c00f,::1,GET,http://localhost/GestionDeStock/web/app_dev.php/admin/StockGlobale,1511113310,,200
+e89ae6,::1,GET,http://localhost/GestionDeStock/web/app_dev.php/admin/stockglobale/4,1511113321,,200

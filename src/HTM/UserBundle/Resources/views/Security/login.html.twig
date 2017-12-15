@@ -1,0 +1,79 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+<div class="tiles grey p-t-20 p-b-20 text-black"><br>
+    <form id="frm_login" class="animated fadeIn"  action="{{ path("admin_check") }}" method="post"  novalidate>
+        
+         
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+        {% if error %}
+            <font size="5" face="georgia" class="text-danger"><h4 style="color:#FF0000" align="center">login ou mot de passe incorrecte</h4></font>
+        {% endif %}
+    <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+
+            <div class="col-md-6 col-sm-6 ">
+
+
+                <div class="controls">
+                    <div class="input-with-icon  right">
+                        {% if error %}
+                            <font size="5" face="georgia" class="text-danger"><h4 style="color:#FF0000" align="center">login obligatoire</h4></font>
+                        {% endif %}
+
+                        <input type="text" id="username" class="form-control" name="_username"
+                               value="{{ last_username }}" required="required" placeholder="Username"/>
+
+                    </div>
+                </div>
+            </div>
+        
+      
+            <div class="col-md-6 col-sm-6 ">
+                
+                <div class="controls">
+                    <div class="input-with-icon  right">
+                        {% if error %}
+                            <font size="5" face="georgia" class="text-danger"><h4 style="color:#FF0000" align="center">mot de passe obligatoire</h4></font>
+                        {% endif %}
+                        <input type="password" id="password" name="_password" class="form-control" required="required" placeholder="Password"/>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+<div class="row p-t-10 m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+<div class="control-group  col-md-10">
+    <div class="checkbox checkbox check-success">
+                      <input type="checkbox" id="checkbox1" value="1">
+                      <label for="checkbox1">{{ 'security.login.remember_me'|trans }}</label>
+                    </div>
+        
+        </div>
+        </div>
+<div class="row p-t-10 m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+<div  class="col-md-6 col-sm-6 ">
+    </div>     
+            <div align ="right" class="col-md-6 col-sm-6">
+                <button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"
+                        class="btn btn-primary btn-cons pull-right"> Login
+                </button>
+            </div>
+            
+            </div>
+
+    </form>
+      <div class="login-footer">
+                <div class="pull-left">
+                    &copy; 2016 Gestion De Stock
+                </div>
+
+    </div>
+    </div>
+
+    {% endblock fos_user_content %}

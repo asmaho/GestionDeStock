@@ -1,0 +1,138 @@
+
+{% extends 'HTMStockBundle::index.html.twig' %}
+
+{% block body %}
+<link href="{{asset('bundles/htmstock/admin/plugins/datatables-responsive/css/datatables.responsive.css')}}" rel="stylesheet" type="text/css" media="screen"/>
+<script src="{{asset('bundles/htmstock/admin/plugins/jquery-datatable/js/jquery.dataTables.min.js')}}" type="text/javascript" ></script>
+<script src="{{asset('bundles/htmstock/admin/plugins/bootstrap-tag/bootstrap-tagsinput.min.js')}}" type="text/javascript" ></script>
+<script type="text/javascript" src="{{asset('bundles/htmstock/admin/plugins/dropzone/dropzone.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/htmstock/admin/js/form_elements.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/script.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/jquery.js')}}"></script>
+<div class="row">
+    <div class="col-md-12">
+        {#<form id= registration_form >#}
+        {{ form_start (form , {'attr': {'novalidate': 'novalidate'}}) }}
+
+        <div class="grid simple">
+                <div class="grid-title no-border">
+                    <h4>Ajouter <span class="semi-bold">un Produit</span></h4>
+                    <a href="{{ path('produit_index') }}" data-color="rgb(255, 255, 255)"
+                       data-color-format="hex" id="cp4" class="btn btn-primary my-colorpicker-control"
+                       href="#" data-colorpicker-guid="1"><i class="fa fa-reply-all">  Retourner à la liste</i></a>
+                    <div class="tools"> <a href="javascript:;" class="collapse"></a>  </div>
+                </div>
+                <div class="grid-body no-border"> <br>
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-xs-8">                                          
+                            <div class="form-group">
+                                <label class="form-label"><span class="semi-bold">Nom</span></label>
+                                <div class="controls" class="form_text" id="form_name">
+                                    {#<span class="error_form" id="name_error_message"></span>#}
+                                    <font size="2" face="georgia" class="text-danger">{{ form_errors(form.nom) }}</font>
+                                    {{ form_widget(form.nom)}}
+
+
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label"><span class="semi-bold">BareCode</span></label>
+                                    <span class="help"></span>
+                                    <font size="2" face="georgia" class="text-danger">{{ form_errors(form.barCode) }}</font>
+                                    <input type="number" class="form-control"
+
+                                    {{ form_widget(form.barCode)}}
+
+                                        </div>
+                                   
+                                   
+                                   
+
+
+                                     <div class="form-group">
+                                    <label class="form-label"><span class="semi-bold">Quantité</span></label>
+                                    <span class="help"></span>
+                                         <font size="2" face="georgia" class="text-danger">{{ form_errors(form.quantiteStock) }}</font>
+                                    <input type="number" class="form-control"
+                                    {{ form_widget(form.quantiteStock)}}
+
+                                        </div>
+                                   
+
+                                     <div class="form-group">
+                                    <label class="form-label"><span class="semi-bold">Quantité minimale</span></label>
+                                    <span class="help"></span>
+                                         <font size="2" face="georgia" class="text-danger">{{ form_errors(form.quantiteMin) }}</font>
+                                    <input type="number" class="form-control"
+                                    {{ form_widget(form.quantiteMin)}}
+
+                                        </div>
+                                   
+
+                                     <div class="form-group">
+                                    <label class="form-label"><span class="semi-bold">prix</span></label>
+
+                                         <font size="2" face="georgia" class="text-danger">{{ form_errors(form.price) }}</font>
+                                     <input type="number" class="form-control" {{ form_widget(form.price) }}
+
+                                        
+                                        </div>
+                                    
+
+
+
+                                    
+                                        <div class="form-group">
+                                            <label class="form-label">Categorie</label>
+
+                                            <div class="controls">
+                                                <font size="2" face="georgia" class="text-danger">{{ form_errors(form.categorie) }}</font>
+                                    {{ form_widget(form.categorie)}}
+
+                                                </div>
+                                            </div>
+
+                                  <div class="form-group">
+                                    <label class="form-label"><span class="semi-bold">photo</span></label>
+                                    <span class="help"></span>
+                                    <div class="controls" >
+                                        <font size="2" face="georgia" class="text-danger">{{ form_errors(form.file) }}</font>
+                                    {{ form_widget(form.file)}}
+
+                                        </div>
+                                    </div>
+                                  <div class="form-group">
+                                    <label class="form-label"><span class="semi-bold">Description</span></label>
+                                    <span class="help"></span>
+                                    <div class="controls" type="text">
+                                        <font size="2" face="georgia" class="text-danger">{{ form_errors(form.description) }}</font>
+                                    {{ form_widget(form.description)}}
+
+                                        </div>
+                                    </div>
+                                           
+ <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
+
+     <div class="pull-right">
+<button type="submit" class="btn btn-primary btn-cons"><i class="icon-ok"></i> Save</button>
+                <button type="button" class="btn btn-white btn-cons">Cancel</button>
+            </div>
+
+             </div>
+</div>
+
+    </div>
+     </div>
+ {{ form_rest(form) }}
+    {#</form>#}
+ </div>
+     </div>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-message">
+            <em>Notice</em>: {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+ {% endblock  %}

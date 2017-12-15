@@ -1,0 +1,103 @@
+{% extends 'HTMStockBundle::index.html.twig' %}
+
+{% block body %}
+    <link href="{{asset('bundles/htmstock/admin/plugins/datatables-responsive/css/datatables.responsive.css')}}" rel="stylesheet" type="text/css" media="screen"/>
+<script src="{{asset('bundles/htmstock/admin/plugins/jquery-datatable/js/jquery.dataTables.min.js')}}" type="text/javascript" ></script>
+<script src="{{asset('bundles/htmstock/admin/plugins/bootstrap-tag/bootstrap-tagsinput.min.js')}}" type="text/javascript" ></script>
+<script type="text/javascript" src="{{asset('bundles/htmstock/admin/plugins/dropzone/dropzone.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/htmstock/admin/js/form_elements.js')}}"></script>
+  
+    <div class="row">
+        <div class="col-md-12">
+            <form action="{{ path('fournisseur_edit',{ 'id': fournisseur.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+                <div class="grid simple">
+                    <div class="grid-title no-border">
+
+                        <h4>Ajouter <span class="semi-bold">un Produit</span></h4>
+                    <a href="{{ path('produit_index') }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-primary my-colorpicker-control" href="#" data-colorpicker-guid="1"><i class="fa fa-reply-all">  Retourner à la liste</i></a>
+                    <div class="tools"> <a href="javascript:;" class="collapse"></a>  </div>
+                </div>
+                <div class="grid-body no-border"> <br>
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-xs-8"> 
+
+                        <div class="form-group">
+                                <label class="form-label"><span class="semi-bold">Nom</span></label>
+                                <span class="help"></span>
+                                <div class="controls">
+                                    {{ form_widget(edit_form.nom)}}
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                <label class="form-label"><span class="semi-bold">Prenom</span></label>
+                                <span class="help"></span>
+                                <div class="controls">
+                                    {{ form_widget(edit_form.prenom)}}
+
+                                    </div>
+                                </div>
+
+
+                      <div class="form-group">
+                                <label class="form-label"><span class="semi-bold">Login</span></label>
+                                <span class="help"></span>
+                                <div class="controls">
+                                    {{ form_widget(edit_form.login)}}
+
+                                    </div>
+                                </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Mot passe</label>
+                            
+                                <div class="controls">
+                                {{ form_widget(edit_form.mot_passe)}}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Nom De La sociéte</label>
+                            <div class="controls">
+                                {{ form_widget(edit_form.nomSociete)}}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Adresse</label>
+                       <div class="controls">
+                                {{ form_widget(edit_form.adresse)}}
+                            </div>
+                        </div>
+
+                       <div class="form-group">
+                                    <label class="form-label"><span class="semi-bold">Téléphone</span></label>
+                                    <span class="help"></span>
+                                    <input type="number" class="form-control"
+                                    {{ form_widget(edit_form.tel)}}
+
+                                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Sexe</label>
+                            <div class="controls">
+                                {{ form_widget(edit_form.sexe)}}
+                            </div>
+                            </div>
+                      <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
+
+     <div class="pull-right">
+<button type="submit" class="btn btn-primary btn-cons"><i class="icon-ok"></i> Save</button>
+                <button type="button" class="btn btn-white btn-cons">Cancel</button>
+            </div>
+
+             </div>
+</div>
+    </div>
+     </div>
+ {{ form_rest(edit_form) }}
+    </form>
+ </div>
+     </div>
+
+ {% endblock  %}

@@ -1,0 +1,53 @@
+{% extends 'HTMMagasinierBundle::magasinier.html.twig' %}
+
+{% block body %}
+  <div class=" grid simple">
+      <div class="grid-title row">
+          <div class="col-md-2">{{form_label(form.product)}}</div>
+          <div class="col-md-9"> {{form_widget(form.product,{'attr':{'class':'form-control'}})}}</div>
+      </div>
+       <div id="salepoint-result" class="grid-body row">
+       Aucun élément a afficher pour le moment veuillez sélectionner un produits
+
+      {#<div align="right">
+          <a href="{{ path('produit_index') }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-primary my-colorpicker-control" href="#" data-colorpicker-guid="1"><i class="fa fa-reply-all">  Demander au responsable</i></a>
+      </div>#}
+       </div>
+  </div>
+{% endblock %}
+
+  
+         {% block javascript %}
+             <script>
+                 $(document).ready(function(){
+                     updateTable ( $('#{{ form.product.vars.id }}').val());
+                     $('#{{ form.product.vars.id }}').on('change',function(){
+                         var id =$(this).val();
+                         updateTable (id);
+
+
+                     })
+
+                 })
+                 function updateTable (elem) {
+                     var request =  $.ajax({
+                         url: '{{ path('supply_list') }}',
+                         data: { id: elem },
+                         methode: 'GET',
+                         dataType: "html",
+                         success : function(html, statut){
+                             $('#salepoint-result').html(html);
+                         },
+
+                         error : function(resultat, statut, erreur){
+
+                         },
+
+                         complete : function(resultat, statut){
+
+                         }
+                     });
+                 }
+             </script>
+         {% endblock javascript %}
+

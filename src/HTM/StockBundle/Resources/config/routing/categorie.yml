@@ -1,0 +1,29 @@
+categorie_index:
+    path:     /
+    defaults: { _controller: "HTMStockBundle:Categorie:index" }
+    methods:  GET
+
+categorie_show:
+    path:     /{id}/show
+    defaults: { _controller: "HTMStockBundle:Categorie:show" }
+    methods:  GET
+
+categorie_new:
+    path:     /new
+    defaults: { _controller: "HTMStockBundle:Categorie:new" }
+categorie_create:
+    path:     /create
+    defaults: { _controller: "HTMStockBundle:Categorie:create" }
+    methods:  POST
+
+categorie_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HTMStockBundle:Categorie:edit" }
+    methods:  GET
+
+
+
+categorie_deletee:
+    path:     /{id}/deletee
+    defaults: { _controller: "HTMStockBundle:Categorie:deletee" }
+    methods:  GET

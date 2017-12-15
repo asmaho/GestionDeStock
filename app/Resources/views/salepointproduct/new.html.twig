@@ -1,0 +1,177 @@
+{% extends 'HTMStockBundle::index.html.twig' %}
+
+{% block body %}
+
+    <link href="{{asset('bundles/htmstock/admin/plugins/jquery-datatable/css/jquery.dataTables.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('bundles/htmstock/admin/plugins/boostrap-checkbox/css/bootstrap-checkbox.css')}}" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="{{asset('bundles/htmstock/admin/plugins/datatables-responsive/css/datatables.responsive.css')}}" rel="stylesheet" type="text/css" media="screen"/>
+    <script src="{{asset('bundles/htmstock/admin/plugins/jquery-datatable/js/jquery.dataTables.min.js')}}" type="text/javascript" ></script>
+    <script src="{{asset('bundles/htmstock/admin/plugins/jquery-datatable/extra/js/TableTools.min.js')}}" type="text/javascript" ></script>
+    <script type="text/javascript" src="{{asset('bundles/htmstock/admin/plugins/datatables-responsive/js/datatables.responsive.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/htmstock/admin/plugins/datatables-responsive/js/lodash.min.js')}}"></script>
+
+    <script src="{{asset('bundles/htmstock/admin/js/datatables.js')}}" type="text/javascript"></script>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form action="{{ path('salepointproduct_new') }}" method="post" {{ form_enctype(form) }}>
+                <div class="grid simple">
+                    <div class="grid-title no-border">
+                        <h4>Ajouter <span class="semi-bold">Dispatcher Produit</span></h4>
+                        <a href="{{ path('salepointproduct_index') }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-primary my-colorpicker-control" href="#" data-colorpicker-guid="1"><i class="fa fa-reply-all">  Retourner à la liste</i></a>
+
+                    </div>
+                    <div class="grid-body no-border"> <br>
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <div class="form-group">
+                                    <label class="form-label"><span class="semi-bold">Quantié</span></label>
+                                    <span class="help"></span>
+                                    <div class="controls">
+                                        {{ form_widget(form.quantite)}}
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                   <label class="form-label"> <span class="semi-bold">Produit</span></label>
+                                    <span class="help"></span>
+                                    <div class="controls">
+                                        {{ form_widget(form.produit)}}
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label"><span class="semi-bold">Point De vente</span></label>
+                                    <span class="help"></span>
+                                    <div class="controls">
+                                        {{ form_widget(form.salePoint)}}
+
+                                    </div>
+                                </div>
+                                <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
+
+                                <div class="pull-right">
+                                    <button type="submit" class="btn btn-success btn-cons"><i class="icon-ok"></i> Save</button>
+                                    <button type="button" class="btn btn-white btn-cons">Cancel</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{ form_rest(form) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {#<div class="row">
+    <div class="col-md-12">
+    <form action="{{ path('salepointproduct_new') }}" method="post" {{ form_enctype(form) }}>
+        <div class="grid simple">
+            <div class="grid-title no-border">
+                <h4> <span class="semi-bold">Dispatcher Produit</span></h4>
+                <a href="{{ path('salepointproduct_index') }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-primary my-colorpicker-control" href="#" data-colorpicker-guid="1"><i class="fa fa-reply-all">  Retourner à la liste</i></a>
+
+            </div>
+
+    <div class="form-group">
+        <form name="ajout_produit" id="ajout_produit">
+    <table class="table table-bordered" id="dynamic_field">
+        <tr>
+
+            <tr>
+            <th>Quantité</th>
+            <th>Produit</th>
+            <th>Point De Vente</th>
+            </tr>
+            <td>
+                {{ form_widget(form.quantite)}}
+                <input type="text" name="quantite[]" id="quantite" placeholder="ajouter nouveau " class="form-control name-list">
+
+
+            </td>
+            <td>
+                {{ form_widget(form.produit)}}
+                <input type="text" name="produit[]" id="produit" placeholder="ajouter nouveau" class="form-control name-list">
+
+            </td>
+            <td>
+                {{ form_widget(form.salePoint)}}
+                <input type="text" name="pointvente[]" id="pointvente" placeholder=" ajouter nouveau" class="form-control name-list">
+
+            </td>
+            <td><button type="button" name="ajouter" id="ajouter" class="btn btn-success">Ajouter Plus</button> </td>
+        </tr>
+        </table>
+    <button type="submit" class="btn btn-success btn-cons"><i class="icon-ok"></i> Save</button>
+    <button type="button" class="btn btn-white btn-cons">Cancel</button>
+        </form></div>
+            </div>
+</form>
+        </div>
+    </div>
+    </div>
+
+{% block javascript %}
+    <script>
+        $(document).ready(function () {
+            var i=1;
+            $('#ajouter').click(function () {
+                i++;
+                $('#dynamic_field').append('<tr id="row'+i+'"><td>{{
+                form_widget(form.quantite)}}<placeholder="Ajouter"
+                class="form-control name-list"></td><td>
+                {{ form_widget(form.produit)}}<placeholder="Ajouter"
+                class="form-control name-list"></td> <td>
+                {{ form_widget(form.salePoint)}}
+                <input type="text" name="pointvente[]" id="pointvente"
+                placeholder="Ajouter" class="form-control name-list"></td> <td><button
+                name="remove" id="+i+" class="btn btn-danger btn_remove">X</button></td></tr>');
+            });
+            $(document).on('click', '.btn_remove', function () {
+                var button_id=$(this).attr("id");
+                $("#row"+button_id+"").remove();
+
+            });
+
+            $('#submit').click(function () {
+                $.ajax({
+                    url:'{{ path('salepointproduct_new') }}',
+                    methode: 'POST',
+                    data: $('#ajout_produit').serialise(),
+                    success : function(data){
+                        alert(data);
+                        $('#ajout_produit')[0].reset();
+                    }
+
+
+                })
+
+            });
+        });
+        {% endblock javascript %}
+        {% endblock %}#}
+
+
+
+
+
+
+

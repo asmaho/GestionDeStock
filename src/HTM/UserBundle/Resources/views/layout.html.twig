@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<meta charset="utf-8" />
+<title>Login Gestion de Stock</title>
+    <link rel="icon" href="{{ asset('assets/img/icon/online-2x.png') }}" type="image/png"  />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+<!-- BEGIN CORE CSS FRAMEWORK -->
+<link href="{{ asset('bundles/htmstock/assets/plugins/pace/pace-theme-flash.css') }}" rel="stylesheet" type="text/css" media="screen"/>
+<link href="{{ asset('bundles/htmstock/assets/plugins/boostrapv3/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('bundles/htmstock/assets/plugins/boostrapv3/css/bootstrap-theme.min.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('bundles/htmstock/assets/plugins/font-awesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('bundles/htmstock/assets/css/animate.min.css') }}" rel="stylesheet" type="text/css"/>
+<!-- END CORE CSS FRAMEWORK -->
+<!-- BEGIN CSS TEMPLATE -->
+<link href="{{ asset('bundles/htmstock/assets/css/style.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('bundles/htmstock/assets/css/responsive.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('bundles/htmstock/assets/css/custom-icon-set.css') }}" rel="stylesheet" type="text/css"/>
+<!-- END CSS TEMPLATE -->
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+
+<body class="error-body no-top lazy"   style="background-image: url('{{ asset('bundles/htmstock/admin/img/works.jpg') }}">
+
+<div class="container">
+  <div class="row login-container animated fadeInUp">  
+        <div class="col-md-7 col-md-offset-2 tiles white no-padding">
+		 <div class="p-t-30 p-l-40 p-b-20 xs-p-t-10 xs-p-l-10 xs-p-b-10">
+           <img align="right" src="{{ asset('bundles/htmstock/admin/img/logo1.png') }}" class="logo" alt=""  data-src="{{ asset('bundles/htmstock/admin/img/logo1.png') }}" data-src-retina="{{ asset('bundles/htmstock/admin/img/logo1.png') }}" width="106" height="21"/>
+
+          <h2 class="normal">Connectez-vous</h2>
+          <p> Entrer votre nom d'utilisateur et votre mot de passe.<br></p>
+
+        </div>
+
+         {% block content %}
+    {% block fos_user_content %}{% endblock %}
+{% endblock %}
+       
+     
+    
+  </div>
+</div>
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN CORE JS FRAMEWORK-->
+<script src="{{ asset('bundles/htmstock/assets/plugins/jquery-1.8.3.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/htmstock/assets/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/htmstock/assets/plugins/pace/pace.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/htmstock/assets/plugins/jquery-validation/js/jquery.validate.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/htmstock/assets/js/login.js' ) }}" type="text/javascript"> </script>
+<script src="{{ asset('bundles/htmstock/assets/plugins/jquery-lazyload/jquery.lazyload.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/htmstock/assets/js/login_v2.js') }}" type="text/javascript"></script>
+<!-- BEGIN CORE TEMPLATE JS -->
+<!-- END CORE TEMPLATE JS -->
+</body>
+</html>

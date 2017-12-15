@@ -1,0 +1,72 @@
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix: /
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /change-password  
+htm_stock_produit:
+    resource: "@HTMStockBundle/Resources/config/routing/produit.yml"
+    prefix:   /admin/produit
+    
+htm_stock_pointdevente:
+    resource: "@HTMStockBundle/Resources/config/routing/pointdevente.yml"
+    prefix:   /admin/pointdevente
+
+htm_stock_magasinier:
+    resource: "@HTMStockBundle/Resources/config/routing/magasinier.yml"
+    prefix:   /admin/magasinier
+
+htm_stock_fournisseur:
+    resource: "@HTMStockBundle/Resources/config/routing/fournisseur.yml"
+    prefix:   /admin/fournisseur
+htm_stock_categorie:
+    resource: "@HTMStockBundle/Resources/config/routing/categorie.yml"
+    prefix:   /admin/categorie
+htm_stock_salepointproduct:
+    resource: "@HTMStockBundle/Resources/config/routing/salepointproduct.yml"
+    prefix:   /admin/salepointproduct
+
+htm_stock:
+    path:     /admin
+    defaults: { _controller: HTMStockBundle:Default:index }
+
+
+htm_stock_rechercheProduit:
+    path:     /admin/recherche
+    defaults: { _controller: HTMStockBundle:Produit:rechercheTraitement }
+
+htm_stock_stockglobale:
+    path:     /admin/stockglobale/{categorie}
+    defaults: { _controller: HTMStockBundle:ProduitEnStock:index,categorie:null}
+
+htm_stock_Facture_ajout:
+    path:     /admin/facture/ajout
+    defaults: { _controller: HTMStockBundle:Facture:ajout }
+htm_stock_Facture:
+    path:     /admin/facture
+    defaults: { _controller: HTMStockBundle:Facture:affiche }
+htm_stock_Facture_modif:
+    path:     /admin/facture/modif/{id}
+    defaults: { _controller: HTMStockBundle:Facture:modifier }
+htm_stock_Facture_supp:
+    path:     /admin/facture/supp/{id}
+    defaults: { _controller: HTMStockBundle:Facture:supprimer }
+
+
+htm_stock_choisir_langue:
+    path:     /choisir-langue/{langue}
+    defaults: { _controller: HTMStockBundle:Default:choisirLangue }

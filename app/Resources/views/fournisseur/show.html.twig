@@ -1,0 +1,120 @@
+{% extends 'HTMStockBundle::index.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-11">
+            <div class="grid simple">
+                <div class="grid-body no-border invoice-body"> <br>
+                    <a href="{{ path('fournisseur_index') }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-primary my-colorpicker-control" href="#" data-colorpicker-guid="1"><i class="fa fa-reply-all">  Retourner à la liste</i></a>
+                    <a href="{{ path('fournisseur_edit', { 'id': fournisseur.id }) }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-warning my-colorpicker-control" href="#" data-colorpicker-guid="1"><i class="fa fa-edit"> Modifier </i></a>
+                    <a href="{{path('fournisseur_delete', { 'id':fournisseur.id }) }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-danger my-colorpicker-control" href="#" data-colorpicker-guid="1"><i class="fa fa-times fa fa-white"> Supprimer</i></a>
+                    <br><br><br><br>
+                    <div class="pull-left">
+                        <address>
+
+
+                            <h5 class="semi-bold " style="color:green"><I>Id:</I></h5>
+                            <strong>{{ fournisseur.id }}</strong><br>
+
+                            <h5 class="semi-bold " style="color:green"><I>Nom:</I></h5>
+                            <strong>{{ fournisseur.nom}}</strong><br>
+
+                            <h5 class="semi-bold " style="color:green"><I>Prenom:</I></h5>
+                            <strong>{{   fournisseur.prenom}}</strong><br>
+
+
+                            <h5  class="semi-bold " style="color:green"><I>Adresse:</I></h5>
+                            <strong>{{ fournisseur.adresse }}</strong><br>
+
+                            <h5  class="semi-bold " style="color:green"><I>Téléphone:</I></h5>
+                            <strong>{{ fournisseur.tel }}</strong><br>
+
+                            <h5  class="semi-bold " style="color:green"><I>Société:</I></h5>
+                            <strong>{{  fournisseur.nomSociete  }}</strong><br>
+                            <br>
+
+                        </address>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+{% endblock %}
+
+{#     <h1>Liste des Fournisseur</h1> #}{#
+  <div class="table-responsive">
+     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr class="active">
+                <th>Id</th>
+                <td>{{ fournisseur.id }}</td>
+            </tr>
+          
+            <tr class="active">
+                <th>Nom</th>
+                <td>{{ fournisseur.nom }}</td>
+            </tr>
+            <tr class="active">
+                <th>Prenom</th>
+                <td>{{ fournisseur.prenom }}</td>
+            </tr class="active">
+            <tr class="active">
+                <th>Adresse</th>
+                <td>{{ fournisseur.adresse }}</td>
+            </tr>
+            <tr class="active">
+                <th>Telephone</th>
+                <td>{{ fournisseur.tel }}</td>
+            </tr>
+           
+            <tr class="active">
+                <th>Sexe</th>
+                <td>{{ fournisseur.sexe }}</td>
+            </tr>
+
+             <tr class="active">
+                <th>Nomsociete</th>
+                <td>{{ fournisseur.nomSociete }}</td>
+            </tr>
+        </tbhead>
+    </table>
+
+    <ul>
+       
+            <a href="{{ path('fournisseur_index') }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-primary my-colorpicker-control">Back to the list</a>
+       
+            <a href="{{ path('fournisseur_edit', { 'id': fournisseur.id }) }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-primary my-colorpicker-control">Edit</a>
+       
+      
+            {{ form_start(delete_form) }}
+             <br>   <input type="submit" class="btn btn-danger" value="Delete">
+            {{ form_end(delete_form) }}
+      
+    </ul>#}
+
+
+
+
+
+
+

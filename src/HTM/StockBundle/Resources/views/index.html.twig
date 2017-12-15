@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>GestionDeStock - Responsive Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- BEGIN PLUGIN CSS -->
+    <link href="{{ asset('assets/plugins/pace/pace-theme-flash.css')}}" rel="stylesheet" type="text/css" media="screen"/>
+    <!-- END PLUGIN CSS -->
+    <!-- BEGIN CORE CSS FRAMEWORK -->
+    <link href="{{ asset('assets/plugins/boostrapv3/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/plugins/boostrapv3/css/bootstrap-theme.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/plugins/font-awesome/css/font-awesome.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/animate.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/plugins/jquery-scrollbar/jquery.scrollbar.css')}}" rel="stylesheet" type="text/css"/>
+    <!-- END CORE CSS FRAMEWORK -->
+    <!-- BEGIN CSS TEMPLATE -->
+    <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/responsive.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/custom-icon-set.css')}}" rel="stylesheet" type="text/css"/>
+    <!-- END CSS TEMPLATE -->
+
+</head>
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+<body class="">
+<!-- BEGIN HEADER -->
+<div class="header navbar navbar-inverse ">
+    <!-- BEGIN TOP NAVIGATION BAR -->
+    <div class="navbar-inner">
+        <div class="header-seperation">
+            <ul class="nav pull-left notifcation-center" id="main-menu-toggle-wrapper" style="display:none">
+                <li class="dropdown"> <a id="main-menu-toggle" href="#main-menu"  class="" > <div class="iconset top-menu-toggle-white"></div> </a> </li>
+            </ul>
+            <!-- BEGIN LOGO -->
+            <a href="{{ path('htm_stock') }}"><img src="{{ asset('bundles/htmstock/admin/img/logo1.png') }}" class="logo" alt=""  data-src="{{ asset('bundles/htmstock/admin/img/logo1.png') }}" data-src-retina="{{ asset('bundles/htmstock/admin/img/logo1.png') }}" width="106" height="21"/></a>
+            <!-- END LOGO -->
+            <ul class="nav pull-right notifcation-center">
+                <li class="dropdown" id="header_task_bar"> <a href="{{ path('htm_stock') }}" class="dropdown-toggle active" data-toggle=""> <div class="iconset top-home"></div> </a> </li>
+                <li class="dropdown" id="portrait-chat-toggler" style="display:none"> <a href="#sidr" class="chat-menu-toggle"> <div class="iconset top-chat-white "></div> </a> </li>
+            </ul>
+        </div>
+        <!-- END RESPONSIVE MENU TOGGLER -->
+        <div class="header-quick-nav" >
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div class="pull-left">
+                <ul class="nav quick-section">
+                    <li class="quicklinks"> <a href="#" class="" id="layout-condensed-toggle" >
+                            <div class="iconset top-menu-toggle-dark"></div>
+                        </a> </li>
+                </ul>
+
+            </div>
+            <!-- END TOP NAVIGATION MENU -->
+            <!-- BEGIN CHAT TOGGLER -->
+            <div class="pull-right">
+                <div class="chat-toggler"> <a href="#" class="dropdown-toggle" id="my-task-list" data-placement="bottom"  data-content='' data-toggle="dropdown" data-original-title="Notifications">
+
+                        <div class="user-details">
+
+                            {% block user %}
+                                <div class="username">
+                                    <span class="badge badge-important"></span>
+                                    {{ app.user.username }} <span class="bold"></span>
+                                </div>
+                            {% endblock user %}
+                        </div>
+
+                        <div class="iconset top-down-arrow"></div>
+                    </a>
+
+                    <div class="profile-pic"> <img src="{{ asset('bundles/htmstock/assets/img/profiles/avatar.jpg')}}"
+                                                   alt="" data-src="{{ asset('bundles/htmstock/assets/img/profiles/avatar.jpg')}}"
+                                                   data-src-retina="{{ asset('bundles/htmstock/assets/img/profiles/avatar.jpg')}}"
+                                                   width="35" height="35" /> </div>
+                </div>
+                <ul class="nav quick-section ">
+                    <li class="quicklinks"> <a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="#" id="user-options">
+                            <div class="iconset top-settings-dark "></div>
+                        </a>
+                        <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
+
+
+                            <li class="divider"></li>
+                            <li><a href="{{ path('admin_logout') }}"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- END CHAT TOGGLER -->
+        </div>
+        <!-- END TOP NAVIGATION MENU -->
+    </div>
+    <!-- END TOP NAVIGATION BAR -->
+</div>
+<!-- END HEADER -->
+<!-- BEGIN CONTAINER -->
+<!-- BEGIN CONTAINER -->
+<div class="page-container row-fluid">
+    <!-- BEGIN SIDEBAR -->
+    <div class="page-sidebar" id="main-menu">
+        <!-- BEGIN MINI-PROFILE -->
+        <div class="page-sidebar-wrapper scrollbar-dynamic" id="main-menu-wrapper">
+            <div class="user-info-wrapper">
+                <div class="profile-wrapper"> <img src="{{ asset('bundles/htmstock/assets/img/profiles/avatar.jpg')}}"
+                                                   alt="" data-src="{{ asset('bundles/htmstock/assets/img/profiles/avatar.jpg')}}"
+                                                   data-src-retina="{{ asset('bundles/htmstock/assets/img/profiles/avatar.jpg')}}"
+                                                   width="69" height="69" /> </div>
+        <div class="user-info">
+          <div class="greeting">Welcome</div>
+
+          {% block user2 %}
+          <div class="username">{{ app.user.username }} </div>
+          {% endblock user2 %}
+
+
+          <div class="status">Status<a href="#">
+                    <div class="status-icon green"></div>
+                    Online</a></div>
+            </div>
+        </div>
+
+
+        <!-- END MINI-PROFILE -->
+        <!-- BEGIN SIDEBAR MENU -->
+
+            <ul>
+                <li class="start "><a href="{{ path('htm_stock') }}"> <i class="icon-custom-home"></i> <span
+                                class="title"> Dashboard</span> <span class="selected"></span> </a>
+
+                </li>
+                <li class=""><a href="{{ path('stock_globale') }}"> <i class="fa fa fa-adjust"></i> <span class ="title"> Etat de Stock</span> </a></li>
+                <li class=""><a href="{{path('admin_list_supply_entre')}}"> <i class="fa fa-envelope"></i> <span
+                                class="title"> Demande Réçu</span> </a></li>
+                <li class=""><a href="{{path('produitfournisseur_new')}}"> <i class="fa fa-envelope"></i> <span
+                                class="title"> Demande D'achat</span> </a></li>
+
+
+
+                <li class=""><a href="javascript:;"> <i class="fa fa fa-adjust"></i> <span class="title"> Stock</span>
+                        <span class="arrow open"></span> </a>
+                    <ul class="sub-menu">
+                        <li><a href="javascript:;"> <span class="title">Entrée au Stock </span> <span
+                                        class="arrow "></span> </a>
+                            <ul class="sub-menu">
+                                <li><a href="{{ path('produit_new') }}"><span class="fa fa-plus"></span> Ajouter Produit
+                                    </a></li>
+                                <li><a href="{{ path('produit_index') }}"><span class="fa fa-file"></span> Liste
+                                         </a></li>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:;"> <span class="title"> Sortie De Stock </span> <span
+                                        class="arrow "></span> </a>
+                            <ul class="sub-menu">
+                                <li><a href="{{ path('salepointproduct_new') }}"><span class="fa fa-plus"></span>  Dispatcher produit</a></li>
+                                <li><a href="{{ path('salepointproduct_index') }}"><span class="fa fa-file"></span> list </a> </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class=""><a href="{{ path('categorie_index') }}"><i class="fa fa-th"></i> <span class="title"> Catégorie</span>
+                    </a></li>
+                <li class="" ><a href="javascript:;"><i class="fa fa-user"></i> <span class="title"> Magasinier </span><span class="arrow "></span> </a>
+                    <ul class="sub-menu">
+                        <li > <a href="{{ path('magasinier_new') }}"> <span class="fa fa-plus"></span> Ajouter  </a> </li>
+                        <li > <a href="{{ path('magasinier_index') }}"> <span class="fa fa-file"></span> Liste  </a> </li>
+                    </ul>
+                </li>
+                <li class=""><a href="javascript:;"><i class="fa fa-th"></i> <span class="title"> Point de Vente</span>
+                        <span class="arrow "></span> </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ path('pointdevente_new') }}"><span class="fa fa-plus"></span> Ajouter </a></li>
+                        <li><a href="{{ path('pointdevente_index') }}"><span class="fa fa-file"></span> Liste </a></li>
+
+                    </ul>
+                </li>
+                <li class=""><a href="javascript:;"> <i class="fa fa-user"></i><span class="title"> Fournisseur</span> <span
+                                class="arrow "></span> </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ path('fournisseur_new') }}"> <span class="fa fa-plus"></span> Ajouter </a></li>
+                        <li><a href="{{ path('fournisseur_index') }}"><span class="fa fa-file"></span> Liste </a></li>
+
+                    </ul>
+                </li>
+
+
+            </ul>
+
+
+
+    </div>
+    </div>
+    <!-- END SIDEBAR -->
+    <!-- BEGIN PAGE CONTAINER-->
+
+    <div class="page-content ">
+        <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+        <div id="portlet-config" class="modal hide">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button"></button>
+                <h3>Widget Settings</h3>
+            </div>
+            <div class="modal-body"> Widget settings form goes here </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="content sm-gutter">
+        <div class="page-title">
+        </div>
+        {% block body %}
+        <!-- END DASHBOARD TILES -->
+        <!-- BEGIN DASHBOARD TILES -->
+
+
+        <div class="grid simple">
+
+            <div class="grid-title no-border">
+
+                <div class="row">
+
+
+                    <div class="col-md-3 col-vlg-4 col-sm-8">
+                        <div class="tiles green m-b-10">
+
+                            <div class="tiles-body">
+                                <img src="{{ asset('bundles/htmstock/assets/img/bell-512.png')}}" width="70px" height="70px">
+                                <div align="center" class="tiles-title text-black" ><strong>Alert Stock</strong></div>
+                                <span align="right" class="badge" id="msgs-badge"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-vlg-4 col-sm-8">
+                        <div class="tiles green m-b-10">
+                            <div class="tiles-body">
+
+                                <img src="{{ asset('bundles/htmstock/assets/img/32213.png')}}" width="70px" height="70px">
+                                 <div align="center" class="tiles-title text-black"><strong>Devis Réçu  </strong></div>
+                                <span align="right" class="badge" id="msgs-badge"></span>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-vlg-4 col-sm-8">
+                        <div class="tiles green m-b-10">
+                            <div class="tiles-body">
+
+                                <img src="{{ asset('bundles/htmstock/assets/img/117-Exchange-256.png')}}" width="70px" height="70px">
+                                <div align="center" class="tiles-title text-black"><strong>Approvisionnement</strong></div>
+                                <span align="right" class="badge" id="msgs-badge"></span>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+                <div class="page-title">
+                    <h2><span class="fa fa-arrow-circle-o-right"></span>Points De Vente</h2>
+                </div>
+
+
+                <!-- PAGE CONTENT WRAPPER -->
+                <div class="page-content-wrap">
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <!-- START DEFAULT DATATABLE -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Liste</h3>
+
+                                </div>
+                                <div class="grid-body ">
+
+                                    <table class="table table-striped" id="example2" >
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Nom point de vente</th>
+                                            <th>Gouvernorat</th>
+                                            <th>Adress</th>
+                                            <th>Téléphone</th>
+                                            <th>Mail</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for pointDeVente in pointDeVentes %}
+
+                                        <tr class="odd gradeX">
+                                            <td><i class="fa fa-plus-circle"></i></td>
+                                            <td>{{ pointDeVente.nomPv }}</td>
+                                            <td>{{ pointDeVente.gouvernorat }}</td>
+                                            <td>{{ pointDeVente.adress }}</td>
+                                            <td>{{ pointDeVente.tel }}</td>
+                                            <td>{{ pointDeVente.mail }}</td>
+
+                                        </tr>
+                                        {% endfor  %}
+                                        </tbody>
+                                    </table>
+                                    <div  align ="right" class="navigation">
+                                        {{ knp_pagination_render(pointDeVentes) }}
+                                    </div>
+
+
+                                    <!-- END WIDGETS -->
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- END PAGE CONTENT -->
+                        </div>
+
+                    </div>
+
+
+
+        {% endblock %}
+    </div>
+</div>
+<!-- END CONTAINER -->
+
+<!-- END CONTAINER -->
+<!-- BEGIN CORE JS FRAMEWORK-->
+<script src="{{ asset('assets/plugins/jquery-1.8.3.min.js')}}" type="text/javascript"></script>
+<script src="{{ asset('assets/plugins/boostrapv3/js/bootstrap.min.js')}}" type="text/javascript"></script>
+<script src="{{ asset('assets/plugins/breakpoints.js')}}" type="text/javascript"></script>
+<script src="{{ asset('assets/plugins/jquery-unveil/jquery.unveil.min.js')}}" type="text/javascript"></script>
+<script src="{{ asset('assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js')}}" type="text/javascript"></script>
+<!-- END CORE JS FRAMEWORK -->
+<!-- BEGIN PAGE LEVEL JS -->
+<script src="{{ asset('assets/plugins/pace/pace.min.js')}}" type="text/javascript"></script>
+<script src="{{ asset('assets/plugins/jquery-numberAnimate/jquery.animateNumbers.js')}}" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN CORE TEMPLATE JS -->
+<script src="{{ asset('assets/js/core.js')}}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/chat.js')}}" type="text/javascript"></script>
+<!-- END CORE TEMPLATE JS -->
+</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

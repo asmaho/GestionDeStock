@@ -1,0 +1,81 @@
+{% extends 'HTMStockBundle::index.html.twig' %}
+{% block body %}
+<div >
+    <div>
+<form method="post">
+    <a href="{{ path('htm_stock_Facture') }}"> List des Factures</a>
+<table>
+   <table>
+	<caption><h1>{{ msg }}</h1></caption>
+	<thead>
+
+		<tr style="width:100%">
+            <td>{{ form_label(form.adresse) }}</td>
+            <td>
+                {{ form_widget(form.adresse) }}
+                {{ form_errors(form.adresse) }}
+            </td>
+             <td align="Right"> 
+            <td >{{ form_label(form.date) }}</td>
+            <td >
+                {{ form_widget(form.date) }}
+                {{ form_errors(form.date) }}
+            </td>
+        </td>
+        </tr>
+        
+        	<tr >
+            <td>{{ form_label(form.facturNum) }}</td>
+            <td>
+                {{ form_widget(form.facturNum) }}
+                {{ form_errors(form.facturNum) }}
+            </td>
+            <td align="Right">
+            <td >{{ form_label(form.type) }}</td>
+            <td >
+                {{ form_widget(form.type) }}
+                {{ form_errors(form.type) }}
+            </td>
+            </td>
+        </tr>
+        <tr >
+            <td>{{ form_label(form.reference) }}</td>
+            <td>
+                {{ form_widget(form.reference) }}
+                {{ form_errors(form.reference) }}
+            </td>
+        </tr>
+		</thead>
+</table>
+
+
+<table style="width:100%" border="1" background-color: #f1f1c1 >
+  <tr>
+    <th>Description</th>
+    <th>Quantité</th> 
+    <th>Prix</th>
+    <th>Total</th>
+  </tr>
+  <tr>
+  	<td>  {{ form_widget(form.description) }}
+                {{ form_errors(form.description) }} 
+    </td>
+  	
+  	<td>  {{ form_widget(form.quantite) }}
+                {{ form_errors(form.quantite) }} </td>
+
+  	<td> {{ form_widget(form.prix) }}
+                {{ form_errors(form.prix) }}  </td>
+    <td> {{ form_widget(form.total) }}
+                {{ form_errors(form.total) }} </td>
+  	
+</table>
+</table>
+{{ form_rest(form) }}
+<input type="submit" value="Ajouter Facture">
+
+
+</form>
+</div>
+</div>
+{% endblock %}

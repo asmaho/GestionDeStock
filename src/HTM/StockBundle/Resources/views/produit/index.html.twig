@@ -1,0 +1,88 @@
+{% extends 'HTMStockBundle::index.html.twig' %}
+
+{% block body %}
+    
+
+    <div class="row" >
+ <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                             Produit list
+                        </div>
+    <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+               
+                <th>Id</th>
+                 <th>Photo</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Barcode</th>
+                <th>Quantitestock</th>
+                <th>Quantitemin</th>
+                <th>Categorie</th>
+                <th>Facture_Reference</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.nom }}</td>
+                <td>{{ produit.description }}</td>
+                <td>{{ produit.barCode }}</td>
+                <td>{{ produit.quantiteStock }}</td>
+                <td>{{ produit.quantiteMin }}</td>
+                <td>{{ produit.categorie.nom }}</td>
+                <td>
+                    {% for facture in produit.facture %}
+                           {{ facture.reference }}<br>
+                    {% endfor %}
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('produit_show', { 'id': produit.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('produit_edit', { 'id': produit.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+       </div>
+</div>
+</div>
+</div>
+    <ul>
+        <li>
+            <a href="{{ path('produit_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+    <div class="navigation">
+          {{ knp_pagination_render(produits) }}
+    </div>
+    <script src="{{ asset('bundles/htmstock/assets/js/jquery-1.10.2.js')}}"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{{ asset('bundles/htmstock/assets/js/bootstrap.min.js')}}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{{ asset('bundles/htmstock/assets/js/jquery.metisMenu.js')}}"></script>
+     <!-- DATA TABLE SCRIPTS -->
+    <script src="{{ asset('bundles/htmstock/assets/js/dataTables/jquery.dataTables.js')}}"></script>
+    <script src="{{ asset('bundles/htmstock/assets/js/dataTables/dataTables.bootstrap.js')}}"></script>
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
+    </script>
+         <!-- CUSTOM SCRIPTS -->
+    <script src="{{ asset('bundles/htmstock/assets/js/custom.js')}}"></script>
+{% endblock %}

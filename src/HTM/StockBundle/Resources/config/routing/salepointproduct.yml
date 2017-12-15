@@ -1,0 +1,24 @@
+salepointproduct_index:
+    path:     /
+    defaults: { _controller: "HTMStockBundle:SalePointProduct:index" }
+    methods:  GET
+
+salepointproduct_show:
+    path:     /{id}/show
+    defaults: { _controller: "HTMStockBundle:SalePointProduct:show" }
+    methods:  GET
+
+salepointproduct_new:
+    path:     /new
+    defaults: { _controller: "HTMStockBundle:SalePointProduct:new" }
+    methods:  [GET, POST]
+
+salepointproduct_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HTMStockBundle:SalePointProduct:edit" }
+    methods:  [GET, POST]
+
+salepointproduct_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HTMStockBundle:SalePointProduct:delete" }
+    methods:  DELETE

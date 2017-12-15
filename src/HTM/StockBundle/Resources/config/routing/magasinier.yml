@@ -1,0 +1,24 @@
+magasinier_index:
+    path:     /
+    defaults: { _controller: "HTMStockBundle:Magasinier:index" }
+    methods:  GET
+
+magasinier_show:
+    path:     /{id}/show
+    defaults: { _controller: "HTMStockBundle:Magasinier:show" }
+    methods:  GET
+
+magasinier_new:
+    path:     /new
+    defaults: { _controller: "HTMStockBundle:Magasinier:new" }
+    methods:  [GET, POST]
+
+magasinier_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HTMStockBundle:Magasinier:edit" }
+    methods:  [GET, POST]
+
+magasinier_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HTMStockBundle:Magasinier:delete" }
+    methods:  DELETE

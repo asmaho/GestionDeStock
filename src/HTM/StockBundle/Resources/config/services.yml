@@ -1,0 +1,4 @@
+services:
+#    htm_stock.example:
+#        class: HTM\StockBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

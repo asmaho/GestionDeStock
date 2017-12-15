@@ -1,0 +1,20 @@
+
+security:
+    providers:
+        fos_userbundle:
+            id: fos_user.user_manager
+
+    firewalls:
+        main:
+            pattern:      .*
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /HTM/login
+                use_forward:    false
+                check_path:     /HTM/login_check
+                failure_path:   null
+                default_target_path: /HTM
+            logout:
+                path:   /HTM/logout
+                target: /HTM
+            anonymous:    true

@@ -1,0 +1,109 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+            ROLE_ADMIN:      ROLE_USER
+            ROLE_SUPERADMIN: ROLE_ADMIN
+            ROLE_MAGASINIER: ROLE_USER
+            ROLE_FOURNISSEUR: ROLE_USER
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    firewalls:
+        dev:
+                    pattern: ^/(_(profiler|wdt)|css|images|js)/
+                    security: false
+        main:
+            pattern: ^/admin
+            form_login:
+                      provider: fos_userbundle
+                      csrf_provider: form.csrf_provider
+                      check_path:    /admin/login_check
+                      login_path:    /admin/login
+                      failure_path:  /admin/login
+                      use_forward:    false
+                      default_target_path: /admin
+                      success_handler: security.authentication.customized_success_handler
+            logout:
+                path: /admin/logout
+                target: /admin/login
+            remember_me:
+                key:      "%secret%"
+                lifetime: 86400 # 24 heures en secondes
+                path:     /admin
+                domain:   ~ # Prend la valeur par défaut du domaine courant depuis $_SERVER
+            anonymous: true
+            context : stock
+        magasinier:
+            pattern: ^/magasinier
+            form_login:
+                      provider: fos_userbundle
+                      csrf_provider: form.csrf_provider
+                      check_path: /magasinier/login_check
+                      login_path: /magasinier/login
+                      failure_path:   /magasinier/login
+                      use_forward:    false
+                      use_referer: true
+                      default_target_path: /magasinier
+                      success_handler: security.authentication.customized_success_handler
+            logout:
+                path: /magasinier/logout
+                target: /
+            remember_me:
+                key:      "%secret%"
+                lifetime: 86400 # 24 heures en secondes
+                path:     /fournisseur
+                domain:   ~ # Prend la valeur par défaut du domaine courant depuis $_SERVER
+            anonymous: true
+            context : stock
+        fournisseur:
+            pattern: ^/fournisseur
+            form_login:
+                      provider: fos_userbundle
+                      csrf_provider: form.csrf_provider
+                      check_path: /fournisseur/login_check
+                      login_path: /fournisseur/login
+                      failure_path:   /fournisseur/login
+                      use_forward:    false
+                      default_target_path: /fournisseur
+                      success_handler: security.authentication.customized_success_handler
+            logout:
+                path: /fournisseur/logout
+                target: /
+            remember_me:
+                key:      "%secret%"
+                lifetime: 86400 # 24 heures en secondes
+                path:     /fournisseur
+                domain:   ~ # Prend la valeur par défaut du domaine courant depuis $_SERVER
+            anonymous: true
+            context : stock
+        default:
+                    anonymous: ~
+                    http_basic: ~
+    access_control:
+        # Liste des pages accessibles à tous les utilisateurs (ne pas toucher)
+        - { path: ^/_wdt/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/_profiler/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/js/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/css/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/fournisseur/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/fournisseur/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/magasinier/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/magasinier/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resseting$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: [ROLE_SUPER_ADMIN,ROLE_ADMIN] }
+        - { path: ^/magasinier, role: ROLE_MAGASINIER }
+        # PAGES ACCESSIBLES AUX FOURNISSEUR
+        - { path: ^/fournisseur, role: ROLE_FOURNISSEUR }
+        # PAGES ACCESSIBLES AUX UTILISATEURS CONNECTES
+        - { path: ^/change-password, role: ROLE_USER }
+        # PAGES ACCESSIBLES À TOUS
+        - { path: ^/*, role: IS_AUTHENTICATED_ANONYMOUSLY }

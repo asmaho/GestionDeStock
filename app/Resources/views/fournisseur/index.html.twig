@@ -1,0 +1,125 @@
+{% extends 'HTMStockBundle::index.html.twig' %}
+
+{% block body %}
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="grid simple ">
+                <div class="grid-title">
+                    <span class="semi-bold">Liste des fournisseurs</span>
+                    <div class="tools"> <a href="javascript:;" class="collapse"></a>
+                        <a href="#grid-config" data-toggle="modal" class="config"></a>
+                        <a href="{{ path('fournisseur_index') }}" class="reload"></a> <a href="javascript:;" class="remove"></a>
+                    </div>
+                </div>
+                <div class="grid-body ">
+                    <table class="table table-striped" id="example2" >
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Adresse</th>
+                            <th>Téléphone</th>
+                            <th>Sexe</th>
+                            <th>Nom societe</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for fournisseur in fournisseurs %}
+
+                            <tr class="odd gradeX">
+                                <td><i class="fa fa-plus-circle"></i></td>
+                                <td>{{ fournisseur.nom }}</td>
+                                <td>{{ fournisseur.prenom }}</td>
+                                <td>{{ fournisseur.adresse }}</td>
+                                <td>{{ fournisseur.tel }}</td>
+                                <td>{{ fournisseur.sexe }}</td>
+                                <td>{{ fournisseur.nomSociete }}</td>
+                                <td class="center">
+                                    <div class="visible-md visible-lg hidden-sm hidden-xs">
+
+                                        <a href="{{ path('fournisseur_edit', { 'id': fournisseur.id }) }}" class="btn btn-xs  btn-warning"><i class="fa fa-edit"></i></a>
+                                        <a href="{{ path('fournisseur_show', { 'id': fournisseur.id }) }}" class="btn btn-xs   btn-primary "><i class="fa fa-share"></i></a>
+                                        <a href="{{ path('fournisseur_delete', { 'id': fournisseur.id }) }}" class="btn btn-xs  btn-danger" ><i class="fa fa-times fa fa-white"></i></a>
+                                    </div> </td>
+
+                            </tr>
+                        {% endfor  %}
+                        </tbody>
+                    </table>
+                
+                <div align ="right" class="navigation">
+        {{ knp_pagination_render(fournisseurs) }}
+    </div>
+    </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <script>
+        $("#test2").remove();
+
+    </script>
+
+
+
+{% endblock %}
+ {#
+<div class="row" >
+ <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                             liste Fournisseur
+                        </div>
+    <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+
+ 
+            <tr class="active">
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Adresse</th>
+                <th>Tel</th>
+                <th>Sexe</th> 
+                <th>Nomsociete</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fournisseur in fournisseurs %}
+            <tr>
+                <td><a href="{{ path('fournisseur_show', { 'id': fournisseur.id }) }}">{{ fournisseur.id }}</a></td>
+                <td>{{ fournisseur.nom }}</td>
+                <td>{{ fournisseur.prenom }}</td>
+                <td>{{ fournisseur.adresse }}</td>
+                <td>{{ fournisseur.tel }}</td>
+                <td>{{ fournisseur.sexe }}</td>
+                <td>{{ fournisseur.nomSociete }}</td>
+                <td>
+                    <ul>
+                        
+                            <a href="{{ path('fournisseur_show', { 'id': fournisseur.id }) }}" data-color="blue" class="btn btn-primary btn-xs">show</a>
+                      
+                       
+                            <a href="{{ path('fournisseur_edit', { 'id': fournisseur.id }) }}" data-color="blue" data-color-format="hex" id="cp4" class="btn btn-primary btn-xs">edit</a>
+                       
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('fournisseur_new') }}" data-color="rgb(255, 255, 255)" data-color-format="hex" id="cp4" class="btn btn-primary my-colorpicker-control">Create a new entry</a>
+        </li>
+    </ul>#}
+

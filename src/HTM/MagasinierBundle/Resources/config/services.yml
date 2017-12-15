@@ -1,0 +1,4 @@
+services:
+#    htm_magasinier.example:
+#        class: HTM\MagasinierBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
